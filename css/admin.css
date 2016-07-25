@@ -1,4 +1,6 @@
 
+/* SQL Styles */
+
 li {
     margin: 0px;
     padding: 5px 3px 0px 4%;
@@ -12,9 +14,10 @@ textarea,
 .xmm-textarea-title,
 #xmm-sql-desc,
 #xmm-match-query,
-#xmm-match-query-desc {
+#xmm-match-query-desc{
     margin-top: 10px;
     margin-left: 4%;
+    height: 7em;
 }
 
 .xmm-textarea {
@@ -41,4 +44,46 @@ textarea,
 .xmm-table th, .xmm-table td {
     border: 1px solid #CCC;
     padding: 3px;
+}
+
+/* Request styles */
+
+#form-details {
+    display: none;
+    margin: 2em;
+}
+
+#xmm-select-request {
+    margin: 2em;
+}
+
+#xmm-select-request-text {
+    margin-right: 10px;
+}
+
+#request-info {
+    padding: 10px;
+    border: 1px solid #CCC;
+}
+
+#comments-text {
+    padding: 20px 0px 0px 0px;
+}
+
+#request-comments {
+    width: 100%;
+    padding: 5px;
+    margin: 5px 0px 20px;
+}
+
+/* Styles in blog dashboard */
+
+ul#xmm-blog-quota-request {
+    float: right;
+    margin-top: 3em !important;
+    width: 40% !important;
+}
+
+ul#xmm-blog-quota-request li {
+    width: 80%;
 }
