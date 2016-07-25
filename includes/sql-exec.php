@@ -1,5 +1,8 @@
 <?php
 
+// Constant that should be larger than the number of blogs in the network
+define(XMM_MAX_BLOG_NUMBER, '1000000');
+
 require_once 'sql-exec-lib.php'; // SQL execution lib
 
 function xmm_sql() {
@@ -125,14 +128,10 @@ function xmm_sql() {
             $xmm_blogname_list = get_xmm_param( 'xmm-blogname-list' );
             $xmm_sql           = $_SESSION['xmm-sql'];
             
-            // Deactivate large network restriction, which affects wp_get_sites()
-            add_filter( 'wp_is_large_network', '__return_false' );
-            $sites = wp_get_sites(array('limit' => 1000000)); // 'Limit' is the maximum number of blog to be returned. We want them all :-)
-
             // Update value of 'selected sites' in accordance with the user selection
             unset($_SESSION['selected_sites']);
             if (('query' == $xmm_select_blogs) || ('all' == $xmm_select_blogs)) {
-                $_SESSION['selected_sites'] = $sites;
+                $_SESSION['selected_sites'] = 'all';
             }
 
             if (('some' == $xmm_select_blogs)) {
@@ -152,6 +151,10 @@ function xmm_sql() {
                         explode (',', $xmm_blogname_list)
                     )
                 );
+
+                // Deactivate large network restriction, which affects wp_get_sites()
+                add_filter( 'wp_is_large_network', '__return_false' );
+                $sites = wp_get_sites(array('limit' => XMM_MAX_BLOG_NUMBER)); // 'Limit' is the maximum number of blog to be returned. We want them all :-)
 
                 // Make the list of selected sites using both lists
                 foreach ($sites as $site) {
@@ -225,7 +228,14 @@ function xmm_sql() {
             $summarize = false;
             $summary   = array();
 
-            foreach ( $_SESSION['selected_sites'] as $site ) {
+            // If the whole site list is needed, we have to get it again to avoid issues due to a too big session file
+            if (isset($_SESSION['selected_sites']) && ('all' == $_SESSION['selected_sites'])) {
+                $selected_sites = xmm_get_sites();
+            } else {
+                $selected_sites = $_SESSION['selected_sites'];
+            }
+
+            foreach ( $selected_sites as $site ) {
                 switch_to_blog( $site['blog_id'] );
 
                 // Create the SQL using the prefixes of the blog

@@ -66,6 +66,27 @@ function xmm_expand_blogid_list($xmm_blogid_list)
 }
 
 /**
+ * Get the list of all the sites, include only the blog_id and the blog path to save memory
+ *
+ * @return array
+ */
+function xmm_get_sites() {
+    $selected_sites = array();
+
+    // Deactivate large network restriction, which affects wp_get_sites()
+    add_filter( 'wp_is_large_network', '__return_false' );
+    $sites = wp_get_sites(array('limit' => XMM_MAX_BLOG_NUMBER)); // 'Limit' is the maximum number of blog to be returned. We want them all :-)
+
+    // Make the list of selected sites using both lists
+    foreach ($sites as $site) {
+        $selected_sites[$site['blog_id']] = array ('blog_id' => $site['blog_id'], 'path' => $site['path']);
+    }
+
+    return $selected_sites;
+}
+
+
+/**
  * Build an array with the results of the SQL execution ready to be printed. Also build the summary if apply
  *
  * @param array $results
