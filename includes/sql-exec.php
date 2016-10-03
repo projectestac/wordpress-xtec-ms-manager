@@ -9,6 +9,11 @@ function xmm_sql() {
 
     set_time_limit(3600); // Limit of execution time: 1 hour
 
+    // In case it is requested via URL, try to increase memory limit
+    if ( isset( $_GET['extramem'] )) {
+        ini_set('memory_limit','400M');
+    }
+
     $action = isset( $_GET['action'] ) ? $_GET['action'] : 'step1';
 
     echo '<div class="wrap">';
@@ -223,7 +228,7 @@ function xmm_sql() {
             </div>
 
             <?php
-            global $switched, $wpdb; // WordPress global variables
+            global $wpdb; // WordPress global variables
 
             $summarize = false;
             $summary   = array();
@@ -234,6 +239,10 @@ function xmm_sql() {
             } else {
                 $selected_sites = $_SESSION['selected_sites'];
             }
+
+            // This constant is defined as an ugly fix to improve memory usage. In function wp-roles()->reinit()
+            //  there's a call to get_option() that consumes a lot of memory.
+            define ('WP_SETUP_CONFIG', true);
 
             foreach ( $selected_sites as $site ) {
                 switch_to_blog( $site['blog_id'] );
@@ -284,6 +293,11 @@ function xmm_sql() {
                 }
 
                 restore_current_blog();
+
+                if ( isset( $_GET['debug'] )) {
+                    echo '<div style="text-align:right">' . memory_get_usage() . '</div>';
+                }
+
             }
 
             if ( $summarize ) {

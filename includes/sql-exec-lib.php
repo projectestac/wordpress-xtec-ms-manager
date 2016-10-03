@@ -85,7 +85,6 @@ function xmm_get_sites() {
     return $selected_sites;
 }
 
-
 /**
  * Build an array with the results of the SQL execution ready to be printed. Also build the summary if apply
  *
