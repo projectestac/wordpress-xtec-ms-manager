@@ -1,6 +1,7 @@
 <?php
 
 require_once 'requests-lib.php';
+require_once 'request-types-lib.php';
 
 // Load javascript
 wp_register_script('request-js', plugins_url() . '/xtec-ms-manager/javascript/requests.js', array('jquery'), '1.1', true);
@@ -24,22 +25,24 @@ function xmm_requests() {
     }
 
     // Check for update request
-    if (isset($_GET['request-id']) && !empty($_GET['request-id']) && isset($_POST['request-state']) && isset($_POST['update']) && ($_POST['update'] == 1)) {
-        $_POST = array_map('stripslashes', $_POST);
+    if ( isset( $_GET['request-id'] ) && !empty( $_GET['request-id'] ) && isset( $_POST['request-state'] ) && isset( $_POST['update'] ) && ( $_POST['update'] == 1 ) ) {
+        $_POST = array_map( 'stripslashes', $_POST );
         $id = intval( $_GET['request-id'] );
-        $request = array (
+        $request = array(
             'id' => $id,
             'request-state' => $_POST['request-state'],
             'response' => $_POST['response'],
             'priv_notes' => $_POST['priv_notes']
         );
-        if ( false !== xmm_update_request($request) ) {
-            // Send e-mail to custom addresses
+
+        $request_original = xmm_get_request( $id );
+
+        // Notify by email to request sender only in case of a change of the state
+        if ( false !== xmm_update_request( $request ) && ( $request_original[ 'state' ] != $request[ 'request-state' ] )) {
             $args = array(
-                'request_id' => $id,
+                'request_id' => $id
             );
-            // TODO: Complete e-mail feature
-            // xmm_send_email ( 'new_request', $args );
+            xmm_send_email( 'update_request', $args );
         }
     }
 
@@ -62,7 +65,15 @@ function xmm_blog_requests() {
     // Check for insert request
     if (isset($_POST['select-request']) && !empty($_POST['select-request']) && isset($_POST['insert']) && ($_POST['insert'] == 1)) {
         $_POST = array_map('stripslashes', $_POST);
-        xmm_insert_request($_POST['select-request'], $_POST['request-comments']);
+        $inserted_id = xmm_insert_request( $_POST['select-request'], $_POST['request-comments'] );
+
+        // Notify the request managers by email that there is a new request waiting to be attended
+        if (( false !== $inserted_id ) && get_site_option( 'xmm_send_email' )) {
+            $args = array(
+                'request_id' => $inserted_id,
+            );
+            xmm_send_email( 'insert_request', $args );
+        }
     }
 
     // Check for new request (Show form)
