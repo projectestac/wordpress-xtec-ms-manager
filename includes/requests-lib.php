@@ -52,7 +52,11 @@ function xmm_insert_request( $request_type_id, $request_comments ) {
     // Log for the user
     xmm_log_to_user( $result, __( 'Request successfully created', 'xmm' ), __( 'Could not create the request', 'xmm' ));
 
-    return ;
+    if ( $result !== false ) {
+        return $wpdb->insert_id;
+    } else {
+        return false;
+    }
 }
 
 function xmm_update_request( $request ) {
@@ -447,11 +451,11 @@ function xmm_edit_request( $request_id ) {
     echo '</tr><tr>';
 
     echo '<th scope="row">' . __('Response', 'xmm') . '</th>';
-    echo "<td><textarea name=\"response\">$request[response]</textarea></td>";
+    echo "<td><textarea name=\"response\" id=\"request-response\">$request[response]</textarea></td>";
 
     echo '</tr><tr>';
     echo '<th scope="row">' . __('Private notes (only seen by administrators)', 'xmm') . '</th>';
-    echo "<td><textarea name=\"priv_notes\">$request[priv_notes]</textarea></td>";
+    echo "<td><textarea name=\"priv_notes\" id=\"request-priv_notes\">$request[priv_notes]</textarea></td>";
 
     echo '</tr></tbody></table>';
 
@@ -526,8 +530,8 @@ function xmm_view_request( $request_id ) {
     echo '</tr><tr>';
 
     echo '<th scope="row">' . __('Registration Time', 'xmm') . '</th>';
-    if ($request[time_creation] != '0000-00-00 00:00:00') {
-        $time = DateTime::createFromFormat("Y-m-d H:i:s", $request[time_creation]);
+    if ( $request[ 'time_creation' ] != '0000-00-00 00:00:00' ) {
+        $time = DateTime::createFromFormat( "Y-m-d H:i:s", $request[ 'time_creation' ]);
         echo '<td>' . $time->format("d-m-Y H:i") . '</td>';
     } else {
         echo '<td><em>' . __('Date not set', 'xmm') . '</em></td>';
@@ -585,15 +589,18 @@ function xmm_get_request_state( $state_id ) {
     $color = 'white';
     $desc = __('Request state not set', 'xmm');
 
-    switch($state_id) {
+    switch( $state_id ) {
+
         case STATE_PENDING:
             $color = '#fcf8e3'; // Yellow
             $desc = __('Pending', 'xmm');
             break;
+
         case STATE_DENIED:
             $color = '#f2dede'; // Red
             $desc = __('Denied', 'xmm');
             break;
+
         case STATE_ACCEPTED:
             $color = '#dff0d8'; // Green
             $desc = __('Accepted', 'xmm');
@@ -623,6 +630,8 @@ function xmm_get_request( $id ) {
 
     global $wpdb;
 
+    switch_to_blog( 1 );
+
     $request = $wpdb->get_row("
         SELECT *  
         FROM $wpdb->prefix" . "requests r
@@ -630,6 +639,8 @@ function xmm_get_request( $id ) {
         ",
         ARRAY_A,
         0);
+
+    restore_current_blog();
 
     return $request;
 }

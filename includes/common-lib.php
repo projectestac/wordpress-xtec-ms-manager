@@ -198,53 +198,60 @@ function xmm_print_pager( $current_page, $last_page ) {
  */
 function xmm_send_email( $type, $args ) {
 
-    // TODO: Complete this function
+    switch_to_blog( 1 );
+
     switch( $type ) {
-        case 'new_request':
+
+        case 'insert_request':
             $request_id = $args[ 'request_id' ];
             $request = xmm_get_request( $request_id );
             $request_type = xmm_get_request_type( $request[ 'request_type_id' ] );
-            $request_state = xmm_get_request_state( $request[ 'request_type_id' ] );
+            $time = DateTime::createFromFormat( "Y-m-d H:i:s", $request[ 'time_creation' ]);
+
+            $email_text = '<p style="margin-left:1.5em;">' . __( 'Dear request admin,', 'xmm' ) . '</p><p>' . __( 'There is a new request pending to be attended:', 'xmm' );
+            $email_text .= '<ul><li><strong>' . __( 'Request Type', 'xmm' ) . '</strong>: ' . $request_type[ 'name' ] . '</li>';
+            $email_text .= '<li><strong>' . __( 'User', 'xmm' ) . '</strong>: ' . $request[ 'display_name' ] . ' (' . $request[ 'user_login' ] . ' - ' . $request[ 'user_email' ] . ')</li>';
+            $email_text .= '<li><strong>' . __('Registration Time', 'xmm') . '</strong>: ' . $time->format("d-m-Y H:i") . '</li>';
+            $email_text .= '<li><strong>' . __('Comments', 'xmm') . '</strong>:<p style="font-style:italic;">' . $request[ 'comments' ] . '</p></li></ul>';
+            $email_text .= '<p style="margin-top:2em;">' . __( 'Sincerely yours,', 'xmm' ) . '</p><p>' . __( 'XTECBlocs team', 'xmm' ) . '</p><p style="font-weight:bold;">' . __( 'P.S.: This is an automatic message, please don\'t reply', 'xmm' ) . '</p>';
+
+            $recipient = get_site_option( 'xmm_email_addresses' );
+            $subject = sprintf( __( '[%s] New request', 'xmm' ), wp_specialchars_decode( get_option( 'blogname' )));
+
+            break;
+
+        case 'update_request':
+            $request_id = $args[ 'request_id' ];
+            $request = xmm_get_request( $request_id );
+            $request_type = xmm_get_request_type( $request[ 'request_type_id' ] );
+            $request_state = xmm_get_request_state( $request[ 'state' ] );
             $blog_details = get_blog_details( $request[ 'blog_id'] );
             $blog_url = network_site_url( $blog_details->path );
-            $comments = '</p>';
 
-            if (!empty($request[ 'comments'] )) {
-                $comments .= '
-La resposta dels administradors del servei &eacute;s la seg&uuml;ent:
-<p style="font-style:italic; margin:25px;">
-' . $request[ 'commments' ] . '
-</p>
-';
+            $email_text = '<p style="margin-left:1.5em;">' . __( 'Dear user,', 'xmm' ) . '</p><p>' . __( 'The state of the request <strong>##REQUESTTYPENAME##</strong> done in blog <a href="##BLOGURL##">##BLOGURL##</a> has changed to <strong>##REQUESTSTATE##</strong>.', 'xmm' ) . ' ';
+
+            if ( !empty( $request[ 'response'] )) {
+                $email_text .= __( 'The response of the administrators is:', 'xmm' ) . '</p><p style="font-style:italic; margin:2.5em;">##REQUESTRESPONSE##</p>';
+            } else {
+                $email_text .= '</p>';
             }
 
-            $email_text = __( '
-<p style="margin-left:10px;">Benvolgut Sr./Sra.,</p>
-<p>
-    L\'estat de la sol&middot;licitud <strong>' . $request_type ['name']. '</strong> realitzada al 
-    blog <a href="$blog_url">' . $blog_url . '</a> ha canviat 
-    a <strong>' . $request_state . '</strong>. ' . $comments . '
-<p>
-    En cas de disconformitat amb la resoluci&oacute; de la sol&middot;licitud, podeu fer 
-    una nova sol&middot;licitud i fer-hi constar les circumst&agrave;ncies que considereu
-    oportunes.
-</p>
-<br />
-<p>
-    Atentament,
-</p>
-<p>
-    L\'equip del projecte XTECBlocs
-</p>
-<br />
-<p style="font-weight:bold;">
-    P.D.: Aquest missatge s\'envia autom&agrave;ticament. Si us plau, no el respongueu.
-</p>
-            ', 'xmm');
+            $email_text .= '<p>' . __('If you disagree with the resolution, you can do a new request and explain your reasons.' , 'xmm' ) . '</p>';
+            $email_text .= '<p style="margin-top:2em;">' . __( 'Sincerely yours,', 'xmm' ) . '</p><p>' . __( 'XTECBlocs team', 'xmm' ) . '</p><p style="font-weight:bold;">' . __( 'P.S.: This is an automatic message, please don\'t reply', 'xmm' ) . '</p>';
 
-            wp_mail( $request[ 'user_email'], sprintf( __( 'State of requests at [%s]', 'xmm' ), wp_specialchars_decode( get_option( 'blogname' ) ) ), $email_text );
+            // Replace constants
+            $tags = array( '##REQUESTTYPENAME##', '##BLOGURL##', '##REQUESTSTATE##', '##REQUESTRESPONSE##' );
+            $values = array( $request_type[ 'name' ], $blog_url, $request_state[ 1 ], $request[ 'response' ] );
+            $email_text = str_replace( $tags, $values, $email_text);
+
+            $recipient = $request[ 'user_email'];
+            $subject = sprintf( __( '[%s] State of requests', 'xmm' ), wp_specialchars_decode( get_option( 'blogname' )));
 
             break;
     }
+
+    restore_current_blog();
+
+    wp_mail( $recipient, $subject, $email_text );
 
 }

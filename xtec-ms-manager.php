@@ -13,7 +13,7 @@
 defined( 'ABSPATH' ) or die( 'No script kiddies please!' );
 
 include_once 'session.php'; // Activate PHP sessions in XMM
-include_once 'includes/lib.php'; // Plugin general lib
+include_once 'includes/common-lib.php'; // Plugin general lib
 
 register_activation_hook( __FILE__, 'xmm_install' );
 

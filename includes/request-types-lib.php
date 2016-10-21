@@ -299,6 +299,8 @@ function xmm_get_request_type( $id ) {
 
     global $wpdb;
 
+    switch_to_blog( 1 );
+
     $request_type = $wpdb->get_row("
         SELECT *  
         FROM $wpdb->prefix" . "request_types rt
@@ -306,6 +308,8 @@ function xmm_get_request_type( $id ) {
         ",
         ARRAY_A,
         0);
+
+    restore_current_blog();
 
     return $request_type;
 }
