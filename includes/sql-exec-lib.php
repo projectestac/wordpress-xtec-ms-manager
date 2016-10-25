@@ -168,6 +168,11 @@ function print_data( $headers, $data ) {
  */
 function print_summary( $summary ) {
 
+    // Sort values with descending order
+    arsort( $summary );
+
+    $sum = 0;
+
     echo '<h3>' . __( 'Summary of results', 'xmm' ) . '</h3>';
     echo '<table class="xmm-table">';
     echo '<tbody>';
@@ -182,7 +187,12 @@ function print_summary( $summary ) {
         echo '<td>' . $value . '</td>';
         echo '<td align="right">' . $number . '</td>';
         echo '</tr>';
+
+        $sum += $number;
     }
+
+    // Print the sum of all the numbers in the table
+    echo "<tr><td></td><td align=\"right\"><strong>$sum</strong></td></tr>";
 
     echo '</tbody>';
     echo '</table>';

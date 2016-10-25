@@ -1,7 +1,7 @@
 
 // Shows and populates the form for the request
 function change_select(option) {
-    for (i = 0; i < dataResults.length; i++) {
+    for (var i = 0; i < dataResults.length; i++) {
         if (dataResults[i]['id'] == option) {
             jQuery('#form-details').css('display', 'block');
             jQuery('#request-info').text(dataResults[i]['description']);
