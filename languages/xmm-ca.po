@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: XTEC Multisite Manager\n"
 "Report-Msgid-Bugs-To: Translator Name <translations@example.com>\n"
-"POT-Creation-Date: 2016-10-25 14:10+0100\n"
+"POT-Creation-Date: 2016-10-26 23:59+0100\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Toni Ginard <toni.ginard@gmail.com>\n"
 "Language-Team: Àgora <agora@xtec.cat>\n"
@@ -30,8 +30,8 @@ msgstr "Gestor Multisite"
 msgid "SQL"
 msgstr "SQL"
 
-#: xtec-ms-manager.php:36 xtec-ms-manager.php:42 includes/main.php:7
-#: includes/requests-lib.php:118 includes/requests-lib.php:225
+#: xtec-ms-manager.php:36 xtec-ms-manager.php:42 includes/requests-lib.php:118
+#: includes/requests-lib.php:225 includes/main.php:7
 msgid "Requests"
 msgstr "Peticions"
 
@@ -43,6 +43,246 @@ msgstr "Tipus de peticions"
 #: xtec-ms-manager.php:38 includes/main.php:9 includes/settings.php:32
 msgid "Settings"
 msgstr "Opcions"
+
+#: includes/request-types-lib.php:30
+msgid "Request type successfully created"
+msgstr "S'ha creat el tipus de petició correctament"
+
+#: includes/request-types-lib.php:30
+msgid "Could not create the request type"
+msgstr "No s'ha pogut crear el tipus de petició"
+
+#: includes/request-types-lib.php:66
+msgid "Request type successfully updated"
+msgstr "El tipus de petició s'ha actualitzat correctament"
+
+#: includes/request-types-lib.php:66
+msgid "Could not update the request type"
+msgstr "No s'ha pogut actualitzar el tipus de petició"
+
+#: includes/request-types-lib.php:84
+msgid "Request type successfully deleted"
+msgstr "S'ha esborrat correctament el tipus de petició"
+
+#: includes/request-types-lib.php:84
+msgid "Could not delete the request type"
+msgstr "No s'ha pogut esborrar el tipus de petició"
+
+#: includes/request-types-lib.php:95
+msgid "New request type"
+msgstr "Tipus de petició nova"
+
+#: includes/request-types-lib.php:111 includes/requests-lib.php:143
+#: includes/requests-lib.php:260
+msgid "ID"
+msgstr "ID"
+
+#: includes/request-types-lib.php:112
+msgid "Name"
+msgstr "Nom"
+
+#: includes/request-types-lib.php:113 includes/request-types-lib.php:173
+#: includes/request-types-lib.php:235 includes/requests-lib.php:145
+#: includes/requests-lib.php:261 includes/requests-lib.php:434
+#: includes/requests-lib.php:552
+msgid "State"
+msgstr "Estat"
+
+#: includes/request-types-lib.php:114 includes/request-types-lib.php:182
+#: includes/request-types-lib.php:245
+msgid "Description"
+msgstr "Descripció"
+
+#: includes/request-types-lib.php:115
+msgid "Title for comments"
+msgstr "Títol pels comentaris"
+
+#: includes/request-types-lib.php:116 includes/requests-lib.php:151
+#: includes/requests-lib.php:266
+msgid "Actions"
+msgstr "Accions"
+
+#: includes/request-types-lib.php:162
+msgid "New Request Type"
+msgstr "Tipus de petició nova"
+
+#: includes/request-types-lib.php:168 includes/request-types-lib.php:230
+msgid "Request type name"
+msgstr "Nom del tipus de petició"
+
+#: includes/request-types-lib.php:186 includes/request-types-lib.php:249
+msgid "Text for optional comments field"
+msgstr "Text pel camp opcional de comentaris"
+
+#: includes/request-types-lib.php:191 includes/request-types-lib.php:255
+#: includes/requests-lib.php:463 includes/settings.php:54
+msgid "Save changes"
+msgstr "Desa els canvis"
+
+#: includes/request-types-lib.php:215 includes/request-types-lib.php:225
+msgid "Request type edition"
+msgstr "Edició del tipus de petició"
+
+#: includes/request-types-lib.php:217
+msgid "Request type not found"
+msgstr "No s'ha trobat el tipus de petició"
+
+#: includes/request-types-lib.php:266
+msgid "Request type state not set"
+msgstr "No s'ha indicat el tipus de petició"
+
+#: includes/request-types-lib.php:271
+msgid "Active"
+msgstr "Activa"
+
+#: includes/request-types-lib.php:275
+msgid "Inactive"
+msgstr "Inactiva"
+
+#: includes/requests-lib.php:53
+msgid "Request successfully created"
+msgstr "S'ha creat la petició correctament"
+
+#: includes/requests-lib.php:53
+msgid "Could not create the request"
+msgstr "No s'ha pogut crear la petició"
+
+#: includes/requests-lib.php:92
+msgid "Request successfully updated"
+msgstr "S'ha actualitzat la petició correctament"
+
+#: includes/requests-lib.php:92
+msgid "Could not update the request"
+msgstr "No s'ha pogut actualitzar la petició"
+
+#: includes/requests-lib.php:110
+msgid "Request successfully deleted"
+msgstr "S'ha esborrat la petició correctament"
+
+#: includes/requests-lib.php:110
+msgid "Could not delete the request"
+msgstr "No s'ha pogut esborrar la petició"
+
+#: includes/requests-lib.php:144
+msgid "Blog URL"
+msgstr "URL del blog"
+
+#: includes/requests-lib.php:146 includes/requests-lib.php:262
+#: includes/requests-lib.php:400 includes/requests-lib.php:517
+#: includes/common-lib.php:212
+msgid "Request Type"
+msgstr "Tipus de petició"
+
+#: includes/requests-lib.php:147
+msgid "Quota usage"
+msgstr "Ús de la quota"
+
+#: includes/requests-lib.php:148 includes/requests-lib.php:263
+#: includes/requests-lib.php:409 includes/requests-lib.php:528
+#: includes/common-lib.php:213
+msgid "User"
+msgstr "Usuari"
+
+#: includes/requests-lib.php:149 includes/requests-lib.php:264
+msgid "Request date"
+msgstr "Data de la petició"
+
+#: includes/requests-lib.php:150 includes/requests-lib.php:265
+msgid "Edition date"
+msgstr "Data de la darrera edició"
+
+#: includes/requests-lib.php:187 includes/requests-lib.php:193
+#: includes/requests-lib.php:289 includes/requests-lib.php:295
+#: includes/requests-lib.php:418 includes/requests-lib.php:537
+msgid "Date not set"
+msgstr "No s'ha establert la data"
+
+#: includes/requests-lib.php:227
+msgid "New request"
+msgstr "Petició nova"
+
+#: includes/requests-lib.php:329
+msgid "New Request"
+msgstr "Petició nova"
+
+#: includes/requests-lib.php:334
+msgid "There are no available request types"
+msgstr "No hi ha cap tipus de petició definida"
+
+#: includes/requests-lib.php:341
+msgid "Select a request type"
+msgstr "Seleccioneu un tipus de petició"
+
+#: includes/requests-lib.php:356
+msgid "Submit request"
+msgstr "Tramet la petició"
+
+#: includes/requests-lib.php:385 includes/requests-lib.php:395
+#: includes/requests-lib.php:501 includes/requests-lib.php:513
+msgid "Request details"
+msgstr "Detalls de la petició"
+
+#: includes/requests-lib.php:387 includes/requests-lib.php:503
+msgid "Request not found"
+msgstr "No s'ha trobat la petició"
+
+#: includes/requests-lib.php:405 includes/requests-lib.php:523
+msgid "URL"
+msgstr "URL"
+
+#: includes/requests-lib.php:413 includes/requests-lib.php:532
+#: includes/common-lib.php:214
+msgid "Registration Time"
+msgstr "Hora de registre"
+
+#: includes/requests-lib.php:422 includes/requests-lib.php:541
+#: includes/common-lib.php:215
+msgid "Comments"
+msgstr "Comentaris"
+
+#: includes/requests-lib.php:429 includes/requests-lib.php:548
+msgid "Request state"
+msgstr "Estat de la petició"
+
+#: includes/requests-lib.php:444 includes/requests-lib.php:558
+msgid "Latest change"
+msgstr "Darrer canvi"
+
+#: includes/requests-lib.php:449
+msgid "Not edited yet"
+msgstr "Encara no s'ha editat"
+
+#: includes/requests-lib.php:453 includes/requests-lib.php:563
+msgid "Response"
+msgstr "Resposta"
+
+#: includes/requests-lib.php:457 includes/requests-lib.php:568
+msgid "Private notes (only seen by administrators)"
+msgstr "Notes privades (només les veuen els administradors)"
+
+#: includes/requests-lib.php:575
+msgid "Edit the request"
+msgstr "Edita la petició"
+
+#: includes/requests-lib.php:581
+msgid "Back to the request list"
+msgstr "Torna a la llista de peticions"
+
+#: includes/requests-lib.php:590
+msgid "Request state not set"
+msgstr "No s'ha establert la data de la petició"
+
+#: includes/requests-lib.php:596
+msgid "Pending"
+msgstr "Pendent"
+
+#: includes/requests-lib.php:601
+msgid "Denied"
+msgstr "Denegada"
+
+#: includes/requests-lib.php:606
+msgid "Accepted"
+msgstr "Solucionada"
 
 #: includes/sql-exec.php:20 includes/main.php:6
 msgid "SQL execution"
@@ -150,249 +390,98 @@ msgid "The query was executed successfully, but returns no results"
 msgstr ""
 "S'ha executat la consulta correctament, però no ha retornat cap resultat"
 
-#: includes/request-types-lib.php:30
-msgid "Request type successfully created"
-msgstr "S'ha creat el tipus de petició correctament"
+#: includes/sql-exec-lib.php:133
+msgid "An error has ocurred in sentence"
+msgstr "S'ha produït un error en executar la sentència"
 
-#: includes/request-types-lib.php:30
-msgid "Could not create the request type"
-msgstr "No s'ha pogut crear el tipus de petició"
+#: includes/sql-exec-lib.php:134
+msgid "Error description"
+msgstr "Descripció de l'error"
 
-#: includes/request-types-lib.php:66
-msgid "Request type successfully updated"
-msgstr "El tipus de petició s'ha actualitzat correctament"
+#: includes/sql-exec-lib.php:179
+msgid "Summary of results"
+msgstr "Resum de resultats"
 
-#: includes/request-types-lib.php:66
-msgid "Could not update the request type"
-msgstr "No s'ha pogut actualitzar el tipus de petició"
+#: includes/sql-exec-lib.php:184
+msgid "Value"
+msgstr "Valor"
 
-#: includes/request-types-lib.php:84
-msgid "Request type successfully deleted"
-msgstr "S'ha esborrat correctament el tipus de petició"
+#: includes/sql-exec-lib.php:185
+msgid "Number of ocurrences"
+msgstr "Nombre d'aparicions"
 
-#: includes/request-types-lib.php:84
-msgid "Could not delete the request type"
-msgstr "No s'ha pogut esborrar el tipus de petició"
+#: includes/sql-exec-lib.php:201
+msgid "Sum of ocurrences"
+msgstr "Suma d'aparicions"
 
-#: includes/request-types-lib.php:95
-msgid "New request type"
-msgstr "Tipus de petició nova"
-
-#: includes/request-types-lib.php:111 includes/requests-lib.php:143
-#: includes/requests-lib.php:260
-msgid "ID"
-msgstr "ID"
-
-#: includes/request-types-lib.php:112
-msgid "Name"
-msgstr "Nom"
-
-#: includes/request-types-lib.php:113 includes/request-types-lib.php:173
-#: includes/request-types-lib.php:235 includes/requests-lib.php:145
-#: includes/requests-lib.php:261 includes/requests-lib.php:434
-#: includes/requests-lib.php:552
-msgid "State"
-msgstr "Estat"
-
-#: includes/request-types-lib.php:114 includes/request-types-lib.php:182
-#: includes/request-types-lib.php:245
-msgid "Description"
-msgstr "Descripció"
-
-#: includes/request-types-lib.php:115
-msgid "Title for comments"
-msgstr "Títol pels comentaris"
-
-#: includes/request-types-lib.php:116 includes/requests-lib.php:151
-#: includes/requests-lib.php:266
-msgid "Actions"
-msgstr "Accions"
-
-#: includes/request-types-lib.php:162
-msgid "New Request Type"
-msgstr "Tipus de petició nova"
-
-#: includes/request-types-lib.php:168 includes/request-types-lib.php:230
-msgid "Request type name"
-msgstr "Nom del tipus de petició"
-
-#: includes/request-types-lib.php:186 includes/request-types-lib.php:249
-msgid "Text for optional comments field"
-msgstr "Text pel camp opcional de comentaris"
-
-#: includes/request-types-lib.php:191 includes/request-types-lib.php:255
-#: includes/requests-lib.php:463 includes/settings.php:54
-msgid "Save changes"
-msgstr "Desa els canvis"
-
-#: includes/request-types-lib.php:215 includes/request-types-lib.php:225
-msgid "Request type edition"
-msgstr "Edició del tipus de petició"
-
-#: includes/request-types-lib.php:217
-msgid "Request type not found"
-msgstr "No s'ha trobat el tipus de petició"
-
-#: includes/request-types-lib.php:266
-msgid "Request type state not set"
-msgstr "No s'ha indicat el tipus de petició"
-
-#: includes/request-types-lib.php:271
-msgid "Active"
-msgstr "Activa"
-
-#: includes/request-types-lib.php:275
-msgid "Inactive"
-msgstr "Inactiva"
+#: includes/sql-exec-lib.php:205
+msgid "Sum of ocurrences x value"
+msgstr "Suma d'aparicions x valor"
 
 #: includes/main.php:5
 msgid "XTEC Multisite Manager"
 msgstr "Gestor multisite de la XTEC"
 
-#: includes/requests-lib.php:53
-msgid "Request successfully created"
-msgstr "S'ha creat la petició correctament"
+#: includes/common-lib.php:106
+msgid "Request the extension of the quota"
+msgstr "Sol·licita l'ampliació de la quota"
 
-#: includes/requests-lib.php:53
-msgid "Could not create the request"
-msgstr "No s'ha pogut crear la petició"
+#: includes/common-lib.php:211
+msgid "Dear request admin,"
+msgstr "Benvolgut/da administrador/a de peticions,"
 
-#: includes/requests-lib.php:92
-msgid "Request successfully updated"
-msgstr "S'ha actualitzat la petició correctament"
+#: includes/common-lib.php:211
+msgid "There is a new request pending to be attended:"
+msgstr "Hi ha una petició nova a l'espera de ser atesa:"
 
-#: includes/requests-lib.php:92
-msgid "Could not update the request"
-msgstr "No s'ha pogut actualitzar la petició"
+#: includes/common-lib.php:216 includes/common-lib.php:240
+msgid "Sincerely yours,"
+msgstr "Atentament,"
 
-#: includes/requests-lib.php:110
-msgid "Request successfully deleted"
-msgstr "S'ha esborrat la petició correctament"
+#: includes/common-lib.php:216 includes/common-lib.php:240
+msgid "XTECBlocs team"
+msgstr "L'equip de XTECBlocs"
 
-#: includes/requests-lib.php:110
-msgid "Could not delete the request"
-msgstr "No s'ha pogut esborrar la petició"
+#: includes/common-lib.php:216 includes/common-lib.php:240
+msgid "P.S.: This is an automatic message, please don't reply"
+msgstr ""
+"P.D.: Aquest missatge s'envia automàticament, si us plau, no el respongueu"
 
-#: includes/requests-lib.php:144
-msgid "Blog URL"
-msgstr "URL del blog"
+#: includes/common-lib.php:219
+#, php-format
+msgid "[%s] New request"
+msgstr "[%s] Petició nova"
 
-#: includes/requests-lib.php:146 includes/requests-lib.php:262
-#: includes/requests-lib.php:400 includes/requests-lib.php:517
-#: includes/lib.php:212
-msgid "Request Type"
-msgstr "Tipus de petició"
+#: includes/common-lib.php:231
+msgid "Dear user,"
+msgstr "Benvolgut/da usuari/ària,"
 
-#: includes/requests-lib.php:147
-msgid "Quota usage"
-msgstr "Ús de la quota"
+#: includes/common-lib.php:231
+msgid ""
+"The state of the request <strong>##REQUESTTYPENAME##</strong> done in blog "
+"<a href=\"##BLOGURL##\">##BLOGURL##</a> has changed to "
+"<strong>##REQUESTSTATE##</strong>."
+msgstr ""
+"L'estat de la petició <strong>##REQUESTTYPENAME##</strong> realitzat al blog "
+"<a href=\"##BLOGURL##\">##BLOGURL##</a> ha passat a "
+"<strong>##REQUESTSTATE##</strong>."
 
-#: includes/requests-lib.php:148 includes/requests-lib.php:263
-#: includes/requests-lib.php:409 includes/requests-lib.php:528
-#: includes/lib.php:213
-msgid "User"
-msgstr "Usuari"
+#: includes/common-lib.php:234
+msgid "The response of the administrators is:"
+msgstr "La resposta dels administradors del servei és la següent:"
 
-#: includes/requests-lib.php:149 includes/requests-lib.php:264
-msgid "Request date"
-msgstr "Data de la petició"
+#: includes/common-lib.php:239
+msgid ""
+"If you disagree with the resolution, you can do a new request and explain "
+"your reasons."
+msgstr ""
+"En cas de disconformitat amb la resolució, podeu fer una petició nova i fer "
+"constar les vostres al·legacions."
 
-#: includes/requests-lib.php:150 includes/requests-lib.php:265
-msgid "Edition date"
-msgstr "Data de la darrera edició"
-
-#: includes/requests-lib.php:187 includes/requests-lib.php:193
-#: includes/requests-lib.php:289 includes/requests-lib.php:295
-#: includes/requests-lib.php:418 includes/requests-lib.php:537
-msgid "Date not set"
-msgstr "No s'ha establert la data"
-
-#: includes/requests-lib.php:227
-msgid "New request"
-msgstr "Petició nova"
-
-#: includes/requests-lib.php:329
-msgid "New Request"
-msgstr "Petició nova"
-
-#: includes/requests-lib.php:334
-msgid "There are no available request types"
-msgstr "No hi ha cap tipus de petició definida"
-
-#: includes/requests-lib.php:341
-msgid "Select a request type"
-msgstr "Seleccioneu un tipus de petició"
-
-#: includes/requests-lib.php:356
-msgid "Submit request"
-msgstr "Tramet la petició"
-
-#: includes/requests-lib.php:385 includes/requests-lib.php:395
-#: includes/requests-lib.php:501 includes/requests-lib.php:513
-msgid "Request details"
-msgstr "Detalls de la petició"
-
-#: includes/requests-lib.php:387 includes/requests-lib.php:503
-msgid "Request not found"
-msgstr "No s'ha trobat la petició"
-
-#: includes/requests-lib.php:405 includes/requests-lib.php:523
-msgid "URL"
-msgstr "URL"
-
-#: includes/requests-lib.php:413 includes/requests-lib.php:532
-#: includes/lib.php:214
-msgid "Registration Time"
-msgstr "Hora de registre"
-
-#: includes/requests-lib.php:422 includes/requests-lib.php:541
-#: includes/lib.php:215
-msgid "Comments"
-msgstr "Comentaris"
-
-#: includes/requests-lib.php:429 includes/requests-lib.php:548
-msgid "Request state"
-msgstr "Estat de la petició"
-
-#: includes/requests-lib.php:444 includes/requests-lib.php:558
-msgid "Latest change"
-msgstr "Darrer canvi"
-
-#: includes/requests-lib.php:449
-msgid "Not edited yet"
-msgstr "Encara no s'ha editat"
-
-#: includes/requests-lib.php:453 includes/requests-lib.php:563
-msgid "Response"
-msgstr "Resposta"
-
-#: includes/requests-lib.php:457 includes/requests-lib.php:568
-msgid "Private notes (only seen by administrators)"
-msgstr "Notes privades (només les veuen els administradors)"
-
-#: includes/requests-lib.php:575
-msgid "Edit the request"
-msgstr "Edita la petició"
-
-#: includes/requests-lib.php:581
-msgid "Back to the request list"
-msgstr "Torna a la llista de peticions"
-
-#: includes/requests-lib.php:590
-msgid "Request state not set"
-msgstr "No s'ha establert la data de la petició"
-
-#: includes/requests-lib.php:596
-msgid "Pending"
-msgstr "Pendent"
-
-#: includes/requests-lib.php:601
-msgid "Denied"
-msgstr "Denegada"
-
-#: includes/requests-lib.php:606
-msgid "Accepted"
-msgstr "Solucionada"
+#: includes/common-lib.php:248
+#, php-format
+msgid "[%s] State of requests"
+msgstr "[%s] Estat de les peticions"
 
 #: includes/settings.php:29
 msgid "Settings updated successfully"
@@ -417,84 +506,3 @@ msgstr "Adreces de correu a on notificar la creació de peticions"
 #: includes/settings.php:50
 msgid "Comma separated values"
 msgstr "Valors separats per comes"
-
-#: includes/sql-exec-lib.php:133
-msgid "An error has ocurred in sentence"
-msgstr "S'ha produït un error en executar la sentència"
-
-#: includes/sql-exec-lib.php:134
-msgid "Error description"
-msgstr "Descripció de l'error"
-
-#: includes/sql-exec-lib.php:171
-msgid "Summary of results"
-msgstr "Resum de resultats"
-
-#: includes/sql-exec-lib.php:176
-msgid "Value"
-msgstr "Valor"
-
-#: includes/sql-exec-lib.php:177
-msgid "Number of ocurrences"
-msgstr "Nombre d'aparicions"
-
-#: includes/lib.php:106
-msgid "Request the extension of the quota"
-msgstr "Sol·licita l'ampliació de la quota"
-
-#: includes/lib.php:211
-msgid "Dear request admin,"
-msgstr "Benvolgut/da administrador/a de peticions,"
-
-#: includes/lib.php:211
-msgid "There is a new request pending to be attended:"
-msgstr "Hi ha una petició nova a l'espera de ser atesa:"
-
-#: includes/lib.php:216 includes/lib.php:240
-msgid "Sincerely yours,"
-msgstr "Atentament,"
-
-#: includes/lib.php:216 includes/lib.php:240
-msgid "XTECBlocs team"
-msgstr "L'equip de XTECBlocs"
-
-#: includes/lib.php:216 includes/lib.php:240
-msgid "P.S.: This is an automatic message, please don't reply"
-msgstr ""
-"P.D.: Aquest missatge s'envia automàticament, si us plau, no el respongueu"
-
-#: includes/lib.php:219
-#, php-format
-msgid "[%s] New request"
-msgstr "[%s] Petició nova"
-
-#: includes/lib.php:231
-msgid "Dear user,"
-msgstr "Benvolgut/da usuari/ària,"
-
-#: includes/lib.php:231
-msgid ""
-"The state of the request <strong>##REQUESTTYPENAME##</strong> done in blog "
-"<a href=\"##BLOGURL##\">##BLOGURL##</a> has changed to "
-"<strong>##REQUESTSTATE##</strong>."
-msgstr ""
-"L'estat de la petició <strong>##REQUESTTYPENAME##</strong> realitzat al blog "
-"<a href=\"##BLOGURL##\">##BLOGURL##</a> ha passat a "
-"<strong>##REQUESTSTATE##</strong>."
-
-#: includes/lib.php:234
-msgid "The response of the administrators is:"
-msgstr "La resposta dels administradors del servei és la següent:"
-
-#: includes/lib.php:239
-msgid ""
-"If you disagree with the resolution, you can do a new request and explain "
-"your reasons."
-msgstr ""
-"En cas de disconformitat amb la resolució, podeu fer una petició nova i fer "
-"constar les vostres al·legacions."
-
-#: includes/lib.php:248
-#, php-format
-msgid "[%s] State of requests"
-msgstr "[%s] Estat de les peticions"

@@ -171,13 +171,16 @@ function print_summary( $summary ) {
     // Sort values with descending order
     arsort( $summary );
 
+    // $sum accumulates the sum of all the results of the query in all the sites. $sum_product is used when the result
+    //  of the query is a number an accumulates the product of the result by the times it happens.
     $sum = 0;
+    $sum_product = 0;
 
     echo '<h3>' . __( 'Summary of results', 'xmm' ) . '</h3>';
     echo '<table class="xmm-table">';
     echo '<tbody>';
 
-    echo '<tr>';
+    echo '<tr style="border-bottom:5px solid;">';
     echo '<th>' . __( 'Value', 'xmm' ) . '</th>';
     echo '<th>' . __( 'Number of ocurrences', 'xmm' ) . '</th>';
     echo '</tr>';
@@ -189,10 +192,18 @@ function print_summary( $summary ) {
         echo '</tr>';
 
         $sum += $number;
+        if ( is_numeric( $value )) {
+            $sum_product += $value * $number;
+        }
     }
 
     // Print the sum of all the numbers in the table
-    echo "<tr><td></td><td align=\"right\"><strong>$sum</strong></td></tr>";
+    echo '<tr style="border-top:5px solid;"><td><strong>' . __( 'Sum of ocurrences', 'xmm' ) . '</strong></td><td align="right"><strong>' . $sum . '</strong></td></tr>';
+
+    if ( $sum_product > 0 ) {
+        // Print the sum products of all the numbers in the table
+        echo '<tr><td><strong>' . __( 'Sum of ocurrences x value', 'xmm' ) . '</strong></td><td align="right"><strong>' . $sum_product . '</strong></td></tr>';
+    }
 
     echo '</tbody>';
     echo '</table>';
