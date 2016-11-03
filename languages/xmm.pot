@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: XTEC Multisite Manager\n"
 "Report-Msgid-Bugs-To: Translator Name <translations@example.com>\n"
-"POT-Creation-Date: 2016-10-26 23:59+0100\n"
+"POT-Creation-Date: 2016-11-03 13:46+0100\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Toni Ginard <toni.ginard@gmail.com>\n"
 "Language-Team: Àgora <agora@xtec.cat>\n"
@@ -30,8 +30,8 @@ msgstr ""
 msgid "SQL"
 msgstr ""
 
-#: xtec-ms-manager.php:36 xtec-ms-manager.php:42 includes/requests-lib.php:118
-#: includes/requests-lib.php:225 includes/main.php:7
+#: xtec-ms-manager.php:36 xtec-ms-manager.php:42 includes/main.php:7
+#: includes/requests-lib.php:118 includes/requests-lib.php:225
 msgid "Requests"
 msgstr ""
 
@@ -42,6 +42,194 @@ msgstr ""
 
 #: xtec-ms-manager.php:38 includes/main.php:9 includes/settings.php:32
 msgid "Settings"
+msgstr ""
+
+#: includes/sql-exec.php:20 includes/main.php:6
+msgid "SQL execution"
+msgstr ""
+
+#: includes/sql-exec.php:24
+msgid "Step 1 - SQL sentence"
+msgstr ""
+
+#: includes/sql-exec.php:35 includes/sql-exec.php:64 includes/sql-exec.php:191
+#: includes/sql-exec.php:239
+msgid "SQL sentence"
+msgstr ""
+
+#: includes/sql-exec.php:39 includes/sql-exec.php:89
+msgid ""
+"Use the keyword <code>[prefix]</code> to get the proper blog prefix (wp_, "
+"wp_1_, wp_2_, ...)"
+msgstr ""
+
+#: includes/sql-exec.php:47
+msgid "Step 2"
+msgstr ""
+
+#: includes/sql-exec.php:56
+msgid "Step 2 - Select Blogs"
+msgstr ""
+
+#: includes/sql-exec.php:73
+msgid "Main database"
+msgstr ""
+
+#: includes/sql-exec.php:79
+msgid "All blogs"
+msgstr ""
+
+#: includes/sql-exec.php:85
+msgid "Blogs that match this query"
+msgstr ""
+
+#: includes/sql-exec.php:96
+msgid "Some blogs selected manually"
+msgstr ""
+
+#: includes/sql-exec.php:99
+msgid "List of blogs' IDs"
+msgstr ""
+
+#: includes/sql-exec.php:101
+msgid "(Comma separated. Ranges allowed in the form 1-5)"
+msgstr ""
+
+#: includes/sql-exec.php:107
+msgid "List of blogs' names"
+msgstr ""
+
+#: includes/sql-exec.php:109
+msgid "(Comma separated)"
+msgstr ""
+
+#: includes/sql-exec.php:118
+msgid "Step 3"
+msgstr ""
+
+#: includes/sql-exec.php:122 includes/sql-exec.php:217
+msgid "Go Back"
+msgstr ""
+
+#: includes/sql-exec.php:134
+msgid "Step 3 - Confirm execution"
+msgstr ""
+
+#: includes/sql-exec.php:193 includes/sql-exec.php:241
+msgid "SQL match sentence"
+msgstr ""
+
+#: includes/sql-exec.php:195 includes/sql-exec.php:243
+msgid "Execute in main database"
+msgstr ""
+
+#: includes/sql-exec.php:197 includes/sql-exec.php:245
+msgid "Execute in all blogs"
+msgstr ""
+
+#: includes/sql-exec.php:199
+msgid "Selected blogs"
+msgstr ""
+
+#: includes/sql-exec.php:212
+msgid "Execute SQL now!"
+msgstr ""
+
+#: includes/sql-exec.php:227
+msgid "Step 4 - Results of the execution"
+msgstr ""
+
+#: includes/sql-exec.php:234
+msgid "The match sentence must be a select"
+msgstr ""
+
+#: includes/sql-exec.php:294
+msgid "Query executed successfully"
+msgstr ""
+
+#: includes/sql-exec.php:300
+msgid "Query executed successfully. Number of rows affected:"
+msgstr ""
+
+#: includes/sql-exec.php:306
+msgid "The query was executed successfully, but returns no results"
+msgstr ""
+
+#: includes/common-lib.php:106
+msgid "Request the extension of the quota"
+msgstr ""
+
+#: includes/common-lib.php:211
+msgid "Dear request admin,"
+msgstr ""
+
+#: includes/common-lib.php:211
+msgid "There is a new request pending to be attended:"
+msgstr ""
+
+#: includes/common-lib.php:212 includes/requests-lib.php:146
+#: includes/requests-lib.php:262 includes/requests-lib.php:400
+#: includes/requests-lib.php:517
+msgid "Request Type"
+msgstr ""
+
+#: includes/common-lib.php:213 includes/requests-lib.php:148
+#: includes/requests-lib.php:263 includes/requests-lib.php:409
+#: includes/requests-lib.php:528
+msgid "User"
+msgstr ""
+
+#: includes/common-lib.php:214 includes/requests-lib.php:413
+#: includes/requests-lib.php:532
+msgid "Registration Time"
+msgstr ""
+
+#: includes/common-lib.php:215 includes/requests-lib.php:422
+#: includes/requests-lib.php:541
+msgid "Comments"
+msgstr ""
+
+#: includes/common-lib.php:216 includes/common-lib.php:240
+msgid "Sincerely yours,"
+msgstr ""
+
+#: includes/common-lib.php:216 includes/common-lib.php:240
+msgid "XTECBlocs team"
+msgstr ""
+
+#: includes/common-lib.php:216 includes/common-lib.php:240
+msgid "P.S.: This is an automatic message, please don't reply"
+msgstr ""
+
+#: includes/common-lib.php:219
+#, php-format
+msgid "[%s] New request"
+msgstr ""
+
+#: includes/common-lib.php:231
+msgid "Dear user,"
+msgstr ""
+
+#: includes/common-lib.php:231
+msgid ""
+"The state of the request <strong>##REQUESTTYPENAME##</strong> done in blog "
+"<a href=\"##BLOGURL##\">##BLOGURL##</a> has changed to "
+"<strong>##REQUESTSTATE##</strong>."
+msgstr ""
+
+#: includes/common-lib.php:234
+msgid "The response of the administrators is:"
+msgstr ""
+
+#: includes/common-lib.php:239
+msgid ""
+"If you disagree with the resolution, you can do a new request and explain "
+"your reasons."
+msgstr ""
+
+#: includes/common-lib.php:248
+#, php-format
+msgid "[%s] State of requests"
 msgstr ""
 
 #: includes/request-types-lib.php:30
@@ -139,6 +327,10 @@ msgstr ""
 msgid "Inactive"
 msgstr ""
 
+#: includes/main.php:5
+msgid "XTEC Multisite Manager"
+msgstr ""
+
 #: includes/requests-lib.php:53
 msgid "Request successfully created"
 msgstr ""
@@ -167,20 +359,8 @@ msgstr ""
 msgid "Blog URL"
 msgstr ""
 
-#: includes/requests-lib.php:146 includes/requests-lib.php:262
-#: includes/requests-lib.php:400 includes/requests-lib.php:517
-#: includes/common-lib.php:212
-msgid "Request Type"
-msgstr ""
-
 #: includes/requests-lib.php:147
 msgid "Quota usage"
-msgstr ""
-
-#: includes/requests-lib.php:148 includes/requests-lib.php:263
-#: includes/requests-lib.php:409 includes/requests-lib.php:528
-#: includes/common-lib.php:213
-msgid "User"
 msgstr ""
 
 #: includes/requests-lib.php:149 includes/requests-lib.php:264
@@ -230,16 +410,6 @@ msgstr ""
 msgid "URL"
 msgstr ""
 
-#: includes/requests-lib.php:413 includes/requests-lib.php:532
-#: includes/common-lib.php:214
-msgid "Registration Time"
-msgstr ""
-
-#: includes/requests-lib.php:422 includes/requests-lib.php:541
-#: includes/common-lib.php:215
-msgid "Comments"
-msgstr ""
-
 #: includes/requests-lib.php:429 includes/requests-lib.php:548
 msgid "Request state"
 msgstr ""
@@ -284,107 +454,28 @@ msgstr ""
 msgid "Accepted"
 msgstr ""
 
-#: includes/sql-exec.php:20 includes/main.php:6
-msgid "SQL execution"
+#: includes/settings.php:29
+msgid "Settings updated successfully"
 msgstr ""
 
-#: includes/sql-exec.php:24
-msgid "Step 1 - SQL sentence"
+#: includes/settings.php:33
+msgid "Requests settings"
 msgstr ""
 
-#: includes/sql-exec.php:35 includes/sql-exec.php:64 includes/sql-exec.php:176
-#: includes/sql-exec.php:222
-msgid "SQL sentence"
+#: includes/settings.php:39
+msgid "Quota usage to allow ask for an extension"
 msgstr ""
 
-#: includes/sql-exec.php:39 includes/sql-exec.php:83
-msgid ""
-"Use the keyword <code>[prefix]</code> to get the proper blog prefix (wp_, "
-"wp_1_, wp_2_, ...)"
+#: includes/settings.php:43
+msgid "Send e-mail messages when requests are created"
 msgstr ""
 
-#: includes/sql-exec.php:47
-msgid "Step 2"
+#: includes/settings.php:47
+msgid "E-email addresses to notify new requests"
 msgstr ""
 
-#: includes/sql-exec.php:56
-msgid "Step 2 - Select Blogs"
-msgstr ""
-
-#: includes/sql-exec.php:73
-msgid "All blogs"
-msgstr ""
-
-#: includes/sql-exec.php:79
-msgid "Blogs that match this query"
-msgstr ""
-
-#: includes/sql-exec.php:90
-msgid "Some blogs selected manually"
-msgstr ""
-
-#: includes/sql-exec.php:93
-msgid "List of blogs' IDs"
-msgstr ""
-
-#: includes/sql-exec.php:95
-msgid "(Comma separated. Ranges allowed in the form 1-5)"
-msgstr ""
-
-#: includes/sql-exec.php:101
-msgid "List of blogs' names"
-msgstr ""
-
-#: includes/sql-exec.php:103
-msgid "(Comma separated)"
-msgstr ""
-
-#: includes/sql-exec.php:112
-msgid "Step 3"
-msgstr ""
-
-#: includes/sql-exec.php:116 includes/sql-exec.php:200
-msgid "Go Back"
-msgstr ""
-
-#: includes/sql-exec.php:128
-msgid "Step 3 - Confirm execution"
-msgstr ""
-
-#: includes/sql-exec.php:178 includes/sql-exec.php:224
-msgid "SQL match sentence"
-msgstr ""
-
-#: includes/sql-exec.php:180 includes/sql-exec.php:226
-msgid "Execute in all blogs"
-msgstr ""
-
-#: includes/sql-exec.php:182
-msgid "Selected blogs"
-msgstr ""
-
-#: includes/sql-exec.php:195
-msgid "Execute SQL now!"
-msgstr ""
-
-#: includes/sql-exec.php:210
-msgid "Step 4 - Results of the execution"
-msgstr ""
-
-#: includes/sql-exec.php:217
-msgid "The match sentence must be a select"
-msgstr ""
-
-#: includes/sql-exec.php:275
-msgid "Query executed successfully"
-msgstr ""
-
-#: includes/sql-exec.php:281
-msgid "Query executed successfully. Number of rows affected:"
-msgstr ""
-
-#: includes/sql-exec.php:287
-msgid "The query was executed successfully, but returns no results"
+#: includes/settings.php:50
+msgid "Comma separated values"
 msgstr ""
 
 #: includes/sql-exec-lib.php:133
@@ -413,87 +504,4 @@ msgstr ""
 
 #: includes/sql-exec-lib.php:205
 msgid "Sum of ocurrences x value"
-msgstr ""
-
-#: includes/main.php:5
-msgid "XTEC Multisite Manager"
-msgstr ""
-
-#: includes/common-lib.php:106
-msgid "Request the extension of the quota"
-msgstr ""
-
-#: includes/common-lib.php:211
-msgid "Dear request admin,"
-msgstr ""
-
-#: includes/common-lib.php:211
-msgid "There is a new request pending to be attended:"
-msgstr ""
-
-#: includes/common-lib.php:216 includes/common-lib.php:240
-msgid "Sincerely yours,"
-msgstr ""
-
-#: includes/common-lib.php:216 includes/common-lib.php:240
-msgid "XTECBlocs team"
-msgstr ""
-
-#: includes/common-lib.php:216 includes/common-lib.php:240
-msgid "P.S.: This is an automatic message, please don't reply"
-msgstr ""
-
-#: includes/common-lib.php:219
-#, php-format
-msgid "[%s] New request"
-msgstr ""
-
-#: includes/common-lib.php:231
-msgid "Dear user,"
-msgstr ""
-
-#: includes/common-lib.php:231
-msgid ""
-"The state of the request <strong>##REQUESTTYPENAME##</strong> done in blog "
-"<a href=\"##BLOGURL##\">##BLOGURL##</a> has changed to "
-"<strong>##REQUESTSTATE##</strong>."
-msgstr ""
-
-#: includes/common-lib.php:234
-msgid "The response of the administrators is:"
-msgstr ""
-
-#: includes/common-lib.php:239
-msgid ""
-"If you disagree with the resolution, you can do a new request and explain "
-"your reasons."
-msgstr ""
-
-#: includes/common-lib.php:248
-#, php-format
-msgid "[%s] State of requests"
-msgstr ""
-
-#: includes/settings.php:29
-msgid "Settings updated successfully"
-msgstr ""
-
-#: includes/settings.php:33
-msgid "Requests settings"
-msgstr ""
-
-#: includes/settings.php:39
-msgid "Quota usage to allow ask for an extension"
-msgstr ""
-
-#: includes/settings.php:43
-msgid "Send e-mail messages when requests are created"
-msgstr ""
-
-#: includes/settings.php:47
-msgid "E-email addresses to notify new requests"
-msgstr ""
-
-#: includes/settings.php:50
-msgid "Comma separated values"
 msgstr ""

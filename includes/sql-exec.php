@@ -68,8 +68,14 @@ function xmm_sql() {
             <form method="post" action="<?php echo add_query_arg('action', 'step3'); ?>">
                 <ul id="xmm-step2-list">
                     <li class="depth1">
-                        <input id="option1" type="radio" name="xmm-select-blogs" value="all" <?php if ('all' == $xmm_select_blogs) { echo 'checked="checked"'; } ?>/>
+                        <input id="option1" type="radio" name="xmm-select-blogs" value="main_db" <?php if ('main_db' == $xmm_select_blogs) { echo 'checked="checked"'; } ?>/>
                         <label for="option1">
+                            <?php _e('Main database', 'xmm'); ?>
+                        </label>
+                    </li>
+                    <li class="depth1">
+                        <input id="option2" type="radio" name="xmm-select-blogs" value="all" <?php if ('all' == $xmm_select_blogs) { echo 'checked="checked"'; } ?>/>
+                        <label for="option2">
                             <?php _e('All blogs', 'xmm'); ?>
                         </label>
                     </li>
@@ -85,8 +91,8 @@ function xmm_sql() {
                         </label>
                     </li>
                     <li class="depth1">
-                        <input id="option2" type="radio" name="xmm-select-blogs" value="some" <?php if ('some' == $xmm_select_blogs) { echo 'checked="checked"'; } ?>/>
-                        <label for="option2">
+                        <input id="option4" type="radio" name="xmm-select-blogs" value="some" <?php if ('some' == $xmm_select_blogs) { echo 'checked="checked"'; } ?>/>
+                        <label for="option4">
                             <?php _e('Some blogs selected manually', 'xmm') ?>
                             <div class="xmm-textarea">
                                 <div class="xmm-textarea-title">
@@ -133,41 +139,50 @@ function xmm_sql() {
             $xmm_blogname_list = get_xmm_param( 'xmm-blogname-list' );
             $xmm_sql           = $_SESSION['xmm-sql'];
             
-            // Update value of 'selected sites' in accordance with the user selection
             unset($_SESSION['selected_sites']);
-            if (('query' == $xmm_select_blogs) || ('all' == $xmm_select_blogs)) {
-                $_SESSION['selected_sites'] = 'all';
-            }
 
-            if (('some' == $xmm_select_blogs)) {
-                // Convert ranges in a list of ID's
-                $xmm_blogid_list_exp = xmm_expand_blogid_list($xmm_blogid_list);
+            switch ($xmm_select_blogs) {
+                case 'query':
+                case 'all':
+                    // Update value of 'selected sites' in accordance with the user selection
+                    $_SESSION['selected_sites'] = 'all';
+                    break;
 
-                // Get the path of the main blog (blog_id == 1)
-                global $current_blog;
-                $base_path = $current_blog->path;
+                case 'main_db':
+                    global $current_blog;
+                    $_SESSION['selected_sites'] = array( array( 'blog_id' => 1, 'path' => $current_blog->path ));
+                    break;
 
-                // Get the blog lists. Both list will be combined
-                $xmm_blogid_list_array = explode (',', $xmm_blogid_list_exp); // Any possible white space was removed when expanding the list
-                $xmm_blogname_list_array = array_map(
-                    function ($string) use ($base_path) { return "$base_path$string/"; },
-                    array_map(
-                        'trim',
-                        explode (',', $xmm_blogname_list)
-                    )
-                );
+                case 'some':
+                    // Convert ranges in a list of ID's
+                    $xmm_blogid_list_exp = xmm_expand_blogid_list($xmm_blogid_list);
 
-                // Deactivate large network restriction, which affects wp_get_sites()
-                add_filter( 'wp_is_large_network', '__return_false' );
-                $sites = wp_get_sites(array('limit' => XMM_MAX_BLOG_NUMBER)); // 'Limit' is the maximum number of blog to be returned. We want them all :-)
+                    // Get the path of the main blog (blog_id == 1)
+                    global $current_blog;
+                    $base_path = $current_blog->path;
 
-                // Make the list of selected sites using both lists
-                foreach ($sites as $site) {
-                    if (in_array($site['blog_id'], $xmm_blogid_list_array) ||
-                        in_array($site['path'], $xmm_blogname_list_array)) {
-                        $_SESSION['selected_sites'][$site['blog_id']] = array ('blog_id' => $site['blog_id'], 'path' => $site['path']);
+                    // Get the blog lists. Both list will be combined
+                    $xmm_blogid_list_array = explode (',', $xmm_blogid_list_exp); // Any possible white space was removed when expanding the list
+                    $xmm_blogname_list_array = array_map(
+                        function ($string) use ($base_path) { return "$base_path$string/"; },
+                        array_map(
+                            'trim',
+                            explode (',', $xmm_blogname_list)
+                        )
+                    );
+
+                    // Deactivate large network restriction, which affects wp_get_sites()
+                    add_filter( 'wp_is_large_network', '__return_false' );
+                    $sites = wp_get_sites(array('limit' => XMM_MAX_BLOG_NUMBER)); // 'Limit' is the maximum number of blog to be returned. We want them all :-)
+
+                    // Make the list of selected sites using both lists
+                    foreach ($sites as $site) {
+                        if (in_array($site['blog_id'], $xmm_blogid_list_array) ||
+                            in_array($site['path'], $xmm_blogname_list_array)) {
+                            $_SESSION['selected_sites'][$site['blog_id']] = array ('blog_id' => $site['blog_id'], 'path' => $site['path']);
+                        }
                     }
-                }
+                    break;
             }
 
             ?>
@@ -176,6 +191,8 @@ function xmm_sql() {
                 <p><strong><?php _e('SQL sentence', 'xmm'); ?></strong>: <code><?php echo $xmm_sql ?></code></p>
                 <?php if (('query' == $xmm_select_blogs) && !empty($xmm_match_query)) { ?>
                     <p><strong><?php _e('SQL match sentence', 'xmm'); ?></strong>: <code><?php echo $xmm_match_query ?></code></p>
+                <?php } elseif ('main_db' == $xmm_select_blogs) { ?>
+                    <p><strong><?php _e('Execute in main database', 'xmm'); ?></strong></p>
                 <?php } elseif ('all' == $xmm_select_blogs) { ?>
                     <p><strong><?php _e('Execute in all blogs', 'xmm'); ?></strong></p>
                 <?php } elseif ('some' == $xmm_select_blogs) { ?>
@@ -222,6 +239,8 @@ function xmm_sql() {
                 <p><strong><?php _e('SQL sentence', 'xmm'); ?></strong>: <code><?php echo $xmm_sql ?></code></p>
                 <?php if (('query' == $xmm_select_blogs) && !empty($xmm_match_query)) { ?>
                     <p><strong><?php _e('SQL match sentence', 'xmm'); ?></strong>: <code><?php echo $xmm_match_query ?></code></p>
+                <?php } elseif ('main_db' == $xmm_select_blogs) { ?>
+                    <p><strong><?php _e('Execute in main database', 'xmm'); ?></strong></p>
                 <?php } elseif ('all' == $xmm_select_blogs) { ?>
                     <p><strong><?php _e('Execute in all blogs', 'xmm'); ?></strong></p>
                 <?php } ?>
