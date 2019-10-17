@@ -1,7 +1,7 @@
 <?php
 
 // Constant that should be larger than the number of blogs in the network
-define(XMM_MAX_BLOG_NUMBER, '1000000');
+define('XMM_MAX_BLOG_NUMBER', '1000000');
 
 require_once 'sql-exec-lib.php'; // SQL execution lib
 

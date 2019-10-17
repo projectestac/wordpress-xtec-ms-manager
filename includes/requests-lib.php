@@ -30,7 +30,7 @@ function xmm_insert_request( $request_type_id, $request_comments ) {
             'display_name' => $display_name,
             'user_email' => $user_email,
             'time_creation' => date('Y-m-d H:i:s'),
-            'time_edition' => '0000-00-00 00:00:00',
+            'time_edition' => date('Y-m-d H:i:s'),
             'comments' => $comments
         ),
         array(
@@ -180,14 +180,14 @@ function xmm_list_requests() {
         echo "<td><span title='$request[display_name]'>$request[user_login]</span></td>";
 
         // Process datetime
-        if ($request[time_creation] != '0000-00-00 00:00:00') {
-            $time = DateTime::createFromFormat("Y-m-d H:i:s", $request[time_creation]);
+        if ($request['time_creation'] != '0000-00-00 00:00:00') {
+            $time = DateTime::createFromFormat("Y-m-d H:i:s", $request['time_creation']);
             echo '<td>' . $time->format("d-m-Y H:i") . '</td>';
         } else {
             echo '<td><em>' . __('Date not set', 'xmm') . '</em></td>';
         }
-        if ($request[time_edition] != '0000-00-00 00:00:00') {
-            $time = DateTime::createFromFormat("Y-m-d H:i:s", $request[time_edition]);
+        if ($request['time_edition'] != '0000-00-00 00:00:00') {
+            $time = DateTime::createFromFormat("Y-m-d H:i:s", $request['time_edition']);
             echo '<td>' . $time->format("d-m-Y H:i") . '</td>';
         } else {
             echo '<td><em>' . __('Date not set', 'xmm') . '</em></td>';
@@ -282,14 +282,14 @@ function xmm_list_blog_requests() {
         echo "<td><span title='$request[display_name]'>$request[user_login]</span></td>";
 
         // Process datetime
-        if ($request[time_creation] != '0000-00-00 00:00:00') {
-            $time = DateTime::createFromFormat("Y-m-d H:i:s", $request[time_creation]);
+        if ($request['time_creation'] != '0000-00-00 00:00:00') {
+            $time = DateTime::createFromFormat("Y-m-d H:i:s", $request['time_creation']);
             echo '<td>' . $time->format("d-m-Y H:i") . '</td>';
         } else {
             echo '<td><em>' . __('Date not set', 'xmm') . '</em></td>';
         }
-        if ($request[time_edition] != '0000-00-00 00:00:00') {
-            $time = DateTime::createFromFormat("Y-m-d H:i:s", $request[time_edition]);
+        if ($request['time_edition'] != '0000-00-00 00:00:00') {
+            $time = DateTime::createFromFormat("Y-m-d H:i:s", $request['time_edition']);
             echo '<td>' . $time->format("d-m-Y H:i") . '</td>';
         } else {
             echo '<td><em>' . __('Date not set', 'xmm') . '</em></td>';
@@ -411,8 +411,8 @@ function xmm_edit_request( $request_id ) {
     echo '</tr><tr>';
 
     echo '<th scope="row">' . __('Registration Time', 'xmm') . '</th>';
-    if ($request[time_creation] != '0000-00-00 00:00:00') {
-        $time = DateTime::createFromFormat("Y-m-d H:i:s", $request[time_creation]);
+    if ($request['time_creation'] != '0000-00-00 00:00:00') {
+        $time = DateTime::createFromFormat("Y-m-d H:i:s", $request['time_creation']);
         echo '<td>' . $time->format("d-m-Y H:i") . '</td>';
     } else {
         echo '<td><em>' . __('Date not set', 'xmm') . '</em></td>';
@@ -442,8 +442,8 @@ function xmm_edit_request( $request_id ) {
     echo '</tr><tr>';
 
     echo '<th scope="row">' . __('Latest change', 'xmm') . '</th>';
-    if ($request[time_edition] != '0000-00-00 00:00:00') {
-        $time = DateTime::createFromFormat("Y-m-d H:i:s", $request[time_edition]);
+    if ($request['time_edition'] != '0000-00-00 00:00:00') {
+        $time = DateTime::createFromFormat("Y-m-d H:i:s", $request['time_edition']);
         echo '<td>' . $time->format("d-m-Y H:i") . '</td>';
     } else {
         echo '<td>' . __('Not edited yet', 'xmm') . '</td>';
@@ -553,8 +553,8 @@ function xmm_view_request( $request_id ) {
     echo "<td bgcolor=\"$color\">$state_desc</td>";
     echo '</tr><tr>';
 
-    if ($request[time_edition] != '0000-00-00 00:00:00') {
-        $time = DateTime::createFromFormat("Y-m-d H:i:s", $request[time_edition]);
+    if ($request['time_edition'] != '0000-00-00 00:00:00') {
+        $time = DateTime::createFromFormat("Y-m-d H:i:s", $request['time_edition']);
         echo '<th scope="row">' . __('Latest change', 'xmm') . '</th>';
         echo '<td>' . $time->format("d-m-Y H:i") . '</td>';
         echo '</tr><tr>';

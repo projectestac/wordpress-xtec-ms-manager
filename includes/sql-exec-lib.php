@@ -79,7 +79,7 @@ function xmm_get_sites() {
 
     // Make the list of selected sites using both lists
     foreach ($sites as $site) {
-        $selected_sites[$site['blog_id']] = array ('blog_id' => $site['blog_id'], 'path' => $site['path']);
+        $selected_sites[$site->blog_id] = array ('blog_id' => $site->blog_id, 'path' => $site->path);
     }
 
     return $selected_sites;

@@ -2,10 +2,6 @@
 
 require_once 'request-types-lib.php';
 
-// Load javascript
-wp_register_script('request-js', plugins_url() . '/xtec-ms-manager/javascript/requests.js', array('jquery'), '1.1', true);
-wp_enqueue_script('request-js');
-
 function xmm_request_types() {
 
     // Remove automatic added quotes

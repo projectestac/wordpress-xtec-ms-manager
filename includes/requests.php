@@ -3,9 +3,13 @@
 require_once 'requests-lib.php';
 require_once 'request-types-lib.php';
 
-// Load javascript
-wp_register_script('request-js', plugins_url() . '/xtec-ms-manager/javascript/requests.js', array('jquery'), '1.1', true);
-wp_enqueue_script('request-js');
+function load_scripts()
+{
+    wp_register_script('request-js', plugins_url() . '/xtec-ms-manager/javascript/requests.js', array('jquery'), '1.1', true);
+    wp_enqueue_script('request-js');
+}
+
+add_action( 'admin_enqueue_scripts', 'load_scripts' );
 
 /**
  * Manages all the actions in the network side
